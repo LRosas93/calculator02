@@ -76,7 +76,6 @@ body {
 .num-section,
 .operators-section {
     display: inline-grid;
-    border: 1px solid red;
 }
 
 .screen-container {
