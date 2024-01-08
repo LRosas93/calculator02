@@ -5,7 +5,6 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(rgba(0, 0, 255, 0.838), rgba(255, 255, 0, 0.5));
-    overflow: hidden;
 }
 
 
@@ -19,9 +18,9 @@ body {
 }
 
 .calculator {
-    min-width: 14.20em;
-    height: 22.17em;
-    background: darkgrey;
+    width: 10em;
+    height: 23.5em;
+    background: grey;
     padding: 10px;
     border-radius: 10px;
     border: 5px solid black;
@@ -30,8 +29,8 @@ body {
 }
 
 .screen-container {
-    background: rgb(5, 5, 5);
-    color: white;
+    background: #1C1C1C;
+    color: #D4D4D2;
 }
 
 /* toggle buttons */
@@ -39,23 +38,62 @@ body {
     display: none;
 }
 
-/* outer layout */
-.calculator-container {
+/* calculator screen and button layout */
+.calculator {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 50% 1fr 1fr 1fr;
-    gap: 5px;
-    grid-template-areas: 
-        "screen screen screen screen"
-        "functionality functionality functionality operator"
-        "num num num operator"
-        "num num num operator"
-        "num num num operator"
-        "num num num operator"
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+                         "calc-screen"
+                         "pad";
 }
 
 .screen-container {
-    grid-area: screen;
+    width: 100%;
+    height: 100%;
+    grid-area: calc-screen;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.output-display {
+    margin-right: .3em;
+}
+
+
+.pad {
+    grid-area: pad;
+}
+
+/* pad layout */
+
+.functionality-buttons {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.num-section {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.zero-button {
+    grid-template-columns: span 2;
+}
+
+.operators-section {
+    display: inline-grid;
+}
+
+
+.pad {
+    display: inline-grid;
+    grid-template-columns: 79% 21%;
+    grid-template-rows:  20% 80%;
+    grid-template-areas: 
+                        "functionality operator"
+                        "num-pad operator";
 }
 
 .functionality-buttons {
@@ -63,48 +101,46 @@ body {
 }
 
 .num-section {
-    grid-area: num;
+    grid-area: num-pad;
 }
 
 .operators-section {
     grid-area: operator;
-}
-
-/* inner layout */
-.screen-container, 
-.functionality-buttons,
-.num-section,
-.operators-section {
-    display: inline-grid;
-}
-
-.screen-container {
-    justify-content: end;
-    align-items: end;
-    padding-right: 10px;
-}
-
-.functionality-buttons {
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-.operators-section {
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-}
-
-.num-section {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-self: center;
 }
 
 /* buttons */
 .button {
-    font-size: .7em;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
-.zero-button {
+#zero-button {
+    width: 90%;
     grid-column: 1 / span 2;
     display: flex;
     align-items: center;
+    border-radius: 22px;
+}
+
+.num-section .button:nth-last-child(-n + 2) {
+    font-size: 1em;
+}
+
+/* color styling */ 
+.functionality-buttons .button {
+    background-color: #D4D4D2;
+    color: #1C1C1C;
+}
+
+.num-section .button {
+    background-color: #505050;
+    color: #D4D4D2;
+}
+
+.operators-section .button {
+    background-color: #FF9500;
+    color: #D4D4D2;
 }
 
