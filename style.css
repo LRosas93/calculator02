@@ -1,3 +1,10 @@
+/* reset styling */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
     width: 100%;
     height: 100vh;
@@ -18,8 +25,8 @@ body {
 }
 
 .calculator {
-    width: 10em;
-    height: 23.5em;
+    width: 13em;
+    height: 26.5em;
     background: grey;
     padding: 10px;
     border-radius: 10px;
@@ -31,6 +38,7 @@ body {
 .screen-container {
     background: #1C1C1C;
     color: #D4D4D2;
+    overflow: hidden;
 }
 
 /* toggle buttons */
@@ -66,7 +74,6 @@ body {
 }
 
 /* pad layout */
-
 .functionality-buttons {
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -128,7 +135,7 @@ body {
     font-size: 1em;
 }
 
-/* color styling */ 
+/* color styling */
 .functionality-buttons .button {
     background-color: #D4D4D2;
     color: #1C1C1C;
@@ -139,8 +146,21 @@ body {
     color: #D4D4D2;
 }
 
-.operators-section .button {
+.operators-section>* {
     background-color: #FF9500;
     color: #D4D4D2;
+}
+
+/* operator active status */
+.operatorActive {
+    background-color: #D4D4D2;
+    color: #FF9500; 
+}
+
+/* display screen */
+.display {
+    background: transparent;
+    border: 1px dotted red;
+    color: #DFD4D2;
 }
 
