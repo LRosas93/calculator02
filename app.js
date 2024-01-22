@@ -24,11 +24,11 @@ operatorBtn.forEach(button => {
         if (buttonSelected) {
             buttonSelected.style.backgroundColor = orange;
             buttonSelected.style.color = white;
-            addToExpression(displayScreen);
         } 
         button.style.backgroundColor = white;
         button.style.color = orange;
         buttonSelected = button;
+        addToExpression(displayScreen);
     })
 })
 
