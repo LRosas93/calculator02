@@ -17,18 +17,16 @@ body {
 
 .parent-container {
     width: 50vw;
-    height: 60vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 1rem;
+    align-items: center; 
 }
 
 .calculator {
     width: 13em;
     height: 26.5em;
     background: grey;
-    padding: 10px;
     border-radius: 10px;
     border: 5px solid black;
     padding: 1em;
@@ -38,12 +36,16 @@ body {
 .screen-container {
     background: #1C1C1C;
     color: #D4D4D2;
-    overflow: hidden;
 }
 
-/* toggle buttons */
-.clear-section {
-    display: none;
+/* display screen */
+.display {
+    background: transparent;
+    color: #D4D4D2;
+    border: 0;
+    font-size: 1.5em;
+    max-width: 95%;
+    text-align: right;
 }
 
 /* calculator screen and button layout */
@@ -53,21 +55,27 @@ body {
     grid-template-areas:
                          "calc-screen"
                          "pad";
+    gap: .3em;
 }
 
 .screen-container {
-    width: 100%;
+    width: 10.5em;
     height: 100%;
     grid-area: calc-screen;
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
 }
 
-.output-display {
-    margin-right: .3em;
+.numHolder {
+    max-width: 7em;
+    text-align: right;
+    background-color: transparent;
+    color: white;
+    border: 0;
+    font-size: .9em;
 }
-
 
 .pad {
     grid-area: pad;
@@ -131,17 +139,17 @@ body {
     border-radius: 22px;
 }
 
-.num-section .button:nth-last-child(-n + 2) {
+.num-section button:nth-last-child(-n + 2) {
     font-size: 1em;
 }
 
 /* color styling */
-.functionality-buttons .button {
+.functionality-buttons button {
     background-color: #D4D4D2;
     color: #1C1C1C;
 }
 
-.num-section .button {
+.num-section button {
     background-color: #505050;
     color: #D4D4D2;
 }
@@ -151,19 +159,6 @@ body {
     color: #D4D4D2;
 }
 
-/* operator active status */
-.operatorActive {
-    background-color: #D4D4D2;
-    color: #FF9500; 
-}
-
-/* display screen */
-.display {
-    background: transparent;
-    color: #D4D4D2;
-    border: 0;
-    font-size: 1.5em;
-    width: 100%;
-    text-align: right;
-}
-
+/* todo:
+* refactor from num pad.
+*/

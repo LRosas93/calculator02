@@ -1,43 +1,79 @@
-const buttons = document.querySelectorAll('.button');
-const display = document.querySelector('.display');
-const operatorButtons = document.querySelectorAll('.operator');
+// predefined colors in hex code
+const orange = "#FF9500"
+const white = "#D4D4D2"
 
+// screen and expression holder
+const displayScreen = document.querySelector('.display');
+const expHolder = document.querySelector('.numHolder');
+// buttons
+const displayBtn = document.querySelectorAll('.displayBtn');
+const negativeBtn = document.querySelector('.negativeBtn');
+const operatorBtn = document.querySelectorAll('.operator');
 
-buttons.forEach(button => {
+// toggle variables
+let buttonSelected = null;
+
+// Event Listeners
+displayBtn.forEach(button => {
     button.addEventListener('click', () => {
+        addToDisplay(button);
+    })
+})
 
-        if (button.textContent === 'AC') {
-            clearScreen();
-        }
-        // evaluates the expression
-        if (button.textContent === '=') {
-            try {
-                evaluateExpression();
-            } catch(error) {
-                alert("Error: " + error);
-            }
-        }
-        else {
-            addToDisplay(button);
-        }
-        }
-    )
-});
+operatorBtn.forEach(button => {
+    button.addEventListener('click', () => {
+        if (buttonSelected) {
+            buttonSelected.style.backgroundColor = orange;
+            buttonSelected.style.color = white;
+            addToExpression(displayScreen);
+        } 
+        button.style.backgroundColor = white;
+        button.style.color = orange;
+        buttonSelected = button;
+    })
+})
 
+function addToExpression(displayValue) {
+    expHolder.value = displayValue.value;
+    displayScreen.value = '';
+}
+
+function addToDisplay(button) {
+    displayScreen.value += button.textContent;
+}
+
+function makeNegativeNumber() {
+    displayScreen.value = `-${displayScreen.value}`
+}
+
+function makeDecimal(num) {
+    // num is the value of display
+    switch (num.length) {
+
+        case 1:
+            displayScreen.value = `0.0${num}`;
+            break;
+
+        case 2:
+            displayScreen.value = `0.${num}`
+            break;
+        
+        default: 
+            let numLength = num.length;
+            let lastTwo = num.substring(numLength - 2, numLength);
+            let firstHalf = num.substring(0, numLength - 2);
+            displayScreen.value = `${firstHalf}.${lastTwo}`
+    }
+}
+
+// screen clearing
 function clearScreen() {
-    display.value = '';
+    displayScreen.value = '';
+    expHolder.value = '';
+    resetOperatorStyling();
 }
 
-function evaluateExpression() {
-    const result = eval(display.value);
-    display.value = result;
-}
-
-function addToDisplay(btn) {
-    display.value += btn.value;
-}
-
-// operator buttons
-function toggleActive(btn) {
-    btn.classList.toggle('operatorActive');
+function resetOperatorStyling() {
+    buttonSelected.style.backgroundColor = orange;
+    buttonSelected.style.color = white;
 }
