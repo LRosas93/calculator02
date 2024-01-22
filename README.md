@@ -1,3 +1,3 @@
 
+![image](https://github.com/LRosas93/calculator02/assets/71421190/4e6981d2-630e-450f-a1ba-e8aef11d2bfd)
 
-![image](https://github.com/LRosas93/calculator02/assets/71421190/fec8913b-876c-4cf8-88fb-d952540fd5bc)
