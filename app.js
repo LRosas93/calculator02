@@ -2,15 +2,14 @@
 const orange = "#FF9500"
 const white = "#D4D4D2"
 
-// screen and expression holder
 const displayScreen = document.querySelector('.display');
 const expHolder = document.querySelector('.numHolder');
-// buttons
+
 const displayBtn = document.querySelectorAll('.displayBtn');
 const negativeBtn = document.querySelector('.negativeBtn');
 const operatorBtn = document.querySelectorAll('.operator');
 
-// toggle variables
+// toggle variable
 let buttonSelected = null;
 
 // Event Listeners
@@ -47,7 +46,6 @@ function makeNegativeNumber() {
 }
 
 function makeDecimal(num) {
-    // num is the value of display
     switch (num.length) {
 
         case 1:
