@@ -64,7 +64,7 @@ function makeDecimal(num) {
     }
 }
 
-// screen clearing
+
 function clearScreen() {
     displayScreen.value = '';
     expHolder.value = '';
@@ -72,6 +72,21 @@ function clearScreen() {
 }
 
 function resetOperatorStyling() {
-    buttonSelected.style.backgroundColor = orange;
-    buttonSelected.style.color = white;
+    operatorBtn.forEach(button => {
+        button.style.backgroundColor = orange;
+        button.style.color = white;
+    })
+}
+
+function evaluateExpression() {
+    if (expHolder.value && displayScreen.value) {
+        let expression1 = expHolder.value;
+        let operator = buttonSelected.value;
+        let expression2 = displayScreen.value;
+        const output = eval(`${expression1} ${operator} ${expression2}`);
+
+        resetOperatorStyling();
+        expHolder.value = '';
+        displayScreen.value = output;
+    }
 }
